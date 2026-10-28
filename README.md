@@ -1,17 +1,17 @@
 # esphome-hlk-ld2402-with-web-gui-tuning
-ESPHome外部组件-海凌科LD2402雷达传感器，自带web-gui调参
+ESPHome-Externer Baustein – Hailink LD2402 Radarsensor mit integrierter Web-GUI zur Parametrierung
 
 A ESPhome External Component Working With HLK-LD2402 Radar Sensor. Tuning with build-in web gui
 
-## 使用说明：
-* 雷达固件版本需高于或等于v3.3.5,使用官方上位机连接到雷达uart来检查固件及ota固件
-* 仅提供传感器类HA实体(距离、人在、固件版本、工作模式等)，所有调参实体集中到web-gui
-* 提供http api端点，可使用外部http工具调用
-* 没有自动门限生成功能
-* 在esphome 2026.9.0上测试通过，请使用esp-idf toolchain编译
-* 支持多实例，即配置多个ld2402组件。通过id进行区分
-* 对内存与组件库有要求，只支持esp32系列并使用esp-idf框架，不支持esp8266
-* 内存与看门狗特殊配置：
+## Gebrauchsanweisung:
+* Die Firmware-Version des Radars muss mindestens v3.3.5 betragen. Verwenden Sie die offizielle Host-Software, um eine Verbindung zum UART des Radars herzustellen und die Firmware sowie die OTA-Firmware zu überprüfen.
+* Es werden ausschließlich HA-Entitäten vom Typ „Sensor“ bereitgestellt (Entfernung, Anwesenheit, Firmware-Version, Betriebsmodus usw.). Alle Entitäten zur Parametrierung sind in der Web-GUI zusammengefasst.
+* Es wird ein HTTP-API-Endpunkt bereitgestellt, der mit externen HTTP-Tools aufgerufen werden kann.
+* Es gibt keine Funktion zur automatischen Schwellenwertgenerierung.
+* Getestet und für funktionstüchtig befunden unter ESPHome 2026.9.0; bitte mit der ESP-IDF-Toolchain kompilieren.
+* Unterstützung mehrerer Instanzen, d. h. Konfiguration mehrerer LD2402-Komponenten. Die Unterscheidung erfolgt über die ID.
+* Es gelten bestimmte Anforderungen an den Arbeitsspeicher und die Komponentenbibliothek: Es wird nur die ESP32-Serie unter Verwendung des ESP-IDF-Frameworks unterstützt; ESP8266 wird nicht unterstützt.
+* Spezielle Konfiguration für Arbeitsspeicher und Watchdog:
   ```
   esp32:
     variant: esp32c3
@@ -25,15 +25,17 @@ A ESPhome External Component Working With HLK-LD2402 Radar Sensor. Tuning with b
   ```
 * 100% AI Coding
 
-## 界面截图
-* HA实体
+## Gebrauchsanweisung:
+*
+## Screenshots der Benutzeroberfläche
+* HA-Entität
   <img width="344" height="171" alt="image" src="https://github.com/user-attachments/assets/a772bc08-965b-43f1-9026-e1af5b18d4b0" />
   <img width="315" height="107" alt="image" src="https://github.com/user-attachments/assets/103855b2-38f1-4175-9c6e-4e58c3946b29" />
 * web-gui
 * 
    <img src="https://github.com/gasment/esphome_hlk_ld2402_with_web_gui_tuning/blob/main/web-gui.webp" />
 
-## 配置示例
+## Konfigurationsbeispiel
 ```
 external_components:
   - source:
