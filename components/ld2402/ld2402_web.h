@@ -112,7 +112,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       <div class="config-control">
         <input type="range" id="max-dist-slider" min="1" max="16" step="1" value="12"
                oninput="updateDistLabel(this.value)">
-        <span id="max-dist-label">8.4 m（12 门）</span>
+        <span id="max-dist-label">8.4 m</span>
       </div>
     </div>
     <div class="config-item">
