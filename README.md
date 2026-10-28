@@ -47,8 +47,8 @@ external_components:
 
 uart:
   id: uart_ld2402
-  tx_pin: GPIO6   #your uart tx pin
-  rx_pin: GPIO7  #your uart rx pin
+  tx_pin: GPIO4   #your uart tx pin
+  rx_pin: GPIO3  #your uart rx pin
   baud_rate: 115200
   parity: NONE
   stop_bits: 1
