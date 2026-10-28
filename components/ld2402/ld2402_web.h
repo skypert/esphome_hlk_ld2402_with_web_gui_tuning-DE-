@@ -50,13 +50,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
      background:#0d1117;cursor:pointer;font-size:.82rem;
      color:#888;border:1px solid #222;transition:all .15s}
 .tab.active{background:#1565c0;color:#fff;border-color:#1565c0}
-/* 门列表：两行布局 */
+/* Türliste: Zweireihige Anordnung*/
 .gate-list{display:flex;flex-direction:column;gap:12px}
 .gate-row{display:flex;flex-direction:column;gap:3px}
 .gate-row-top{display:flex;justify-content:space-between;align-items:baseline}
 .gate-label{font-size:.72rem;color:#666}
 .bar-val{font-size:.68rem;white-space:nowrap;line-height:1.5}
-/* 图柱 */
+/* Spalte */
 .bar-track{position:relative;height:20px;background:#0d1117;border-radius:6px;overflow:visible}
 .bar-energy{position:absolute;top:2px;left:0;height:16px;border-radius:4px;
             background:linear-gradient(90deg,#1565c0,#42a5f5);
@@ -87,28 +87,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 <!-- 顶栏 -->
 <div class="topbar">
-  <h1>📊 HLK-LD2402 配置工具</h1>
+  <h1>📊 HLK-LD2402 Konfigurationswerkzeuge</h1>
 </div>
 
-<!-- 状态卡片 -->
+<!-- Status -->
 <div class="card">
-  <div class="card-title" style="margin-bottom:10px">设备状态</div>
+  <div class="card-title" style="margin-bottom:10px">Gerätestatus</div>
   <div class="status-row">
     <div class="info-item">
-      <label>固件版本</label><span id="fw">-</span>
+      <label>Firmware-Version</label><span id="fw">-</span>
     </div>
     <div class="info-item">
-      <label>序列号</label><span id="sn">-</span>
+      <label>Seriennummer</label><span id="sn">-</span>
     </div>
   </div>
 </div>
 
-<!-- 基本配置 -->
+<!-- Grundkonfiguartion -->
 <div class="card">
-  <div class="card-title" style="margin-bottom:10px">基本配置</div>
+  <div class="card-title" style="margin-bottom:10px">Grundkonfiguration</div>
   <div class="config-grid">
     <div class="config-item">
-      <label>最大检测距离</label>
+      <label>maximale Erfassungdistanz</label>
       <div class="config-control">
         <input type="range" id="max-dist-slider" min="1" max="16" step="1" value="12"
                oninput="updateDistLabel(this.value)">
@@ -116,7 +116,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       </div>
     </div>
     <div class="config-item">
-      <label>无人超时时间</label>
+      <label>Zeitbegrenzung</label>
       <div class="config-control">
         <input type="number" id="timeout-input" min="0" max="3600" step="5" value="30"
                style="width:80px;background:#0d1117;border:1px solid #333;border-radius:6px;
@@ -126,40 +126,40 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     </div>
   </div>
   <div class="btn-row" style="margin-top:10px">
-    <button class="btn btn-primary" onclick="applyBasicConfig()">✔ 应用配置</button>
+    <button class="btn btn-primary" onclick="applyBasicConfig()">✔ Anwendungskonfiguartion</button>
   </div>
 </div>
 
-<!-- 功能按钮 -->
+<!-- Funktionstasten -->
 <div class="card">
   <div class="card-title" style="margin-bottom:10px">操作</div>
   <div class="btn-row">
-    <button class="btn btn-info"    onclick="apiCmd('read_info')">🔄 加载配置</button>
-    <button class="btn btn-toggle"  id="btn-eng" onclick="toggleEngineer()">⚙️ 工程模式</button>
-    <button class="btn btn-success" onclick="apiCmd('auto_gain')">📶 自动增益</button>
-    <button class="btn btn-danger"  onclick="saveFlash()">💾 保存到Flash</button>
+    <button class="btn btn-info"    onclick="apiCmd('read_info')">🔄 Ladekonfiguration</button>
+    <button class="btn btn-toggle"  id="btn-eng" onclick="toggleEngineer()">⚙️ Entwicklermodus</button>
+    <button class="btn btn-success" onclick="apiCmd('auto_gain')">📶 Automatische Verstärkung</button>
+    <button class="btn btn-danger"  onclick="saveFlash()">💾 Speichern</button>
   </div>
 </div>
 
 
-<!-- 日志输出 -->
+<!-- Log -->
 <div class="card">
-  <div class="card-title" style="margin-bottom:10px">日志输出</div>
+  <div class="card-title" style="margin-bottom:10px">Log Ausgabe</div>
   <div class="log-box" id="log-box"></div>
 </div>
 
-<!-- 门限调整 -->
+<!-- Schwellwertanpassung -->
 <div class="card">
   <div class="gate-header">
-    <div class="card-title">门限调整（先开启工程模式）</div>
+    <div class="card-title">Schwellwertanpassung（Entwicklermodus muss aktiviert sein）</div>
     <div class="gate-status">
-      <span id="presence-badge" class="badge unknown">未知</span>
+      <span id="presence-badge" class="badge unknown">unbekannt</span>
       <span id="dist" class="dist-label">- -</span>
     </div>
   </div>
   <div class="tabs">
-    <div class="tab active" id="tab-motion" onclick="switchTab('motion')">运动触发</div>
-    <div class="tab"        id="tab-micro"  onclick="switchTab('micro')">微动保持</div>
+    <div class="tab active" id="tab-motion" onclick="switchTab('motion')">Bewegungsauslöser</div>
+    <div class="tab"        id="tab-micro"  onclick="switchTab('micro')">Mikrobewegungen</div>
   </div>
   <div id="gates-motion" class="gate-list"></div>
   <div id="gates-micro"  class="gate-list" style="display:none"></div>
@@ -169,9 +169,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 <script>
 const NUM_GATES = 16;
-const DB_MIN    = 20;   // 显示区间下限 dB
-const DB_MAX    = 70;   // 显示区间上限 dB
-const EMA_ALPHA = 0.2;  // 平滑系数
+const DB_MIN    = 20;   // untere Grenze dB
+const DB_MAX    = 70;   // obere Grenze dB
+const EMA_ALPHA = 0.2;  // Glättungskoeffizient
 
 let engineerMode = false;
 let currentTab   = 'motion';
@@ -214,7 +214,7 @@ function fmtDb(raw) {
   return rawToDb(raw).toFixed(1) + ' dB';
 }
 
-// ── 初始化 ────────────────────────────────────────────────────
+// ── Initialisierung ────────────────────────────────────────────────────
 function init() {
   buildGates('motion');
   buildGates('micro');
@@ -251,7 +251,7 @@ function buildGates(type) {
   }
 }
 
-// ── 拖拽滑块 ──────────────────────────────────────────────────
+// ── Schieberegler ──────────────────────────────────────────────────
 function initDrag(thumbId, type, gate) {
   const thumb = document.getElementById(thumbId);
   let dragging = false;
@@ -272,7 +272,7 @@ function initDrag(thumbId, type, gate) {
     if (!dragging) return;
     dragging = false;
     const raw = thresholds[type][gate];
-    log(`写入门限: ${type} G${gate} = ${raw} raw (${fmtDb(raw)})`);
+    log(`Schreibschwelle: ${type} G${gate} = ${raw} raw (${fmtDb(raw)})`);
     pauseSSE();
     apiCmd('write_threshold', { micro: type === 'micro' ? 1 : 0, gate, value: raw })
       .finally(() => resumeSSE());
@@ -294,7 +294,7 @@ function updateThumbUI(type, gate, raw) {
   document.getElementById(`thlabel-${type}-${gate}`).textContent        = fmtDb(raw);
 }
 
-// ── 能量条更新（EMA 平滑）────────────────────────────────────
+// ── Aktualisierung der Energieleiste（EMA glatt）────────────────────────────────────
 function updateEnergyBars(data) {
   ['motion', 'micro'].forEach(type => {
     const arr = data[type === 'motion' ? 'motion' : 'micro'];
@@ -320,7 +320,7 @@ function updateEnergyBars(data) {
   });
 }
 
-// ── 选项卡 ────────────────────────────────────────────────────
+// ── Registerkarten ────────────────────────────────────────────────────
 function switchTab(type) {
   currentTab = type;
   ['motion', 'micro'].forEach(t => {
@@ -329,12 +329,12 @@ function switchTab(type) {
   });
 }
 
-// ── 工程模式切换 ──────────────────────────────────────────────
+// ── Umschaltung in den Engineering-Modus ──────────────────────────────────────────────
 function toggleEngineer() {
   engineerMode = !engineerMode;
   const btn = document.getElementById('btn-eng');
   btn.classList.toggle('on', engineerMode);
-  btn.textContent = engineerMode ? '🔬 工程模式 ON' : '⚙️ 工程模式';
+  btn.textContent = engineerMode ? '🔬 Entwicklermodus ON' : '⚙️ Entwicklermodus';
   apiCmd('set_engineer', { value: engineerMode ? 1 : 0 });
 
   if (engineerMode) {
@@ -342,7 +342,7 @@ function toggleEngineer() {
   } else {
     stopSSE();
     const badge = document.getElementById('presence-badge');
-    badge.textContent = '未知';
+    badge.textContent = 'unbekannt';
     badge.className   = 'badge unknown';
     document.getElementById('dist').textContent = '- -';
     ['motion', 'micro'].forEach(type => {
@@ -369,14 +369,14 @@ function startSSE() {
         document.getElementById('dist').textContent = d.dist + ' cm';
         const present = d.result !== 0;
         const badge   = document.getElementById('presence-badge');
-        badge.textContent = d.result === 0 ? '无人' : d.result === 1 ? '有人' : '有人(静止)';
+        badge.textContent = d.result === 0 ? 'unbemannt' : d.result === 1 ? 'Jemand' : 'Jemand(Tortzdem)';
         badge.className   = 'badge ' + (present ? '' : 'away');
         updateEnergyBars(d);
       }
     } catch(err) {}
   };
   sseSource.onerror = () => {
-    log('SSE 连接断开，5s后重连...');
+    log('SSE Verbindung getrennt，In 5 Sekunden wiederherstellen...');
     stopSSE();
     setTimeout(() => { if (engineerMode) startSSE(); }, 5000);
   };
@@ -388,7 +388,7 @@ function resumeSSE(delayMs = 800) {
   setTimeout(() => { if (engineerMode) startSSE(); }, delayMs);
 }
 
-// ── 基本配置 ──────────────────────────────────────────────────
+// ── Grundkonfiguration ──────────────────────────────────────────────────
 function updateDistLabel(gates) {
   const m = (gates * 0.7).toFixed(1);
   document.getElementById('max-dist-label').textContent = `${m} m（${gates} 门）`;
@@ -398,21 +398,21 @@ async function applyBasicConfig() {
   const gates   = parseInt(document.getElementById('max-dist-slider').value);
   const timeout = parseInt(document.getElementById('timeout-input').value);
   pauseSSE();
-  log(`应用配置: 最大距离=${(gates*0.7).toFixed(1)}m  超时=${timeout}s`);
+  log(`Anwendungskonfiguration: Maximale Entfernung=${(gates*0.7).toFixed(1)}m  Auszeit=${timeout}s`);
   try {
     const r1 = await apiCmd('set_max_distance', { value: gates });
     const r2 = await apiCmd('set_timeout',      { value: timeout });
-    log('基本配置: ' + (r1?.ok && r2?.ok ? '✅ 成功' : '❌ 部分失败'));
+    log('Grundkonfiguration: ' + (r1?.ok && r2?.ok ? '✅ Erfolg' : '❌ Fehlgeschlagen'));
   } catch(e) {
-    log('基本配置失败: ' + e.message);
+    log('Grundkonfiguration fehlgeschlagen: ' + e.message);
   } finally {
     resumeSSE(800);
   }
 }
 
-// ── 保存到 Flash ──────────────────────────────────────────────
+// ── Flash ──────────────────────────────────────────────
 async function saveFlash() {
-  log('正在保存到 Flash...');
+  log('Speichern ...');
   pauseSSE();
   try {
     const res = await fetch('/api/cmd', {
@@ -421,15 +421,15 @@ async function saveFlash() {
       body: JSON.stringify({ cmd: 'save_flash' })
     });
     const d = await res.json();
-    log('Flash 保存: ' + (d.ok ? '✅ 成功--注意及时关闭工程模式' : '❌ 失败'));
+    log('Flash 保存: ' + (d.ok ? '✅ OK--Entwicklermodus beenden!' : '❌ Fehlgeschlagen'));
   } catch(e) {
-    log('Flash 保存失败: ' + e.message);
+    log('Flash fehlgeschlagen: ' + e.message);
   } finally {
     resumeSSE(1200);
   }
 }
 
-// ── 自动门限 ──────────────────────────────────────────────────
+// ── Automatischer Schwellenwert ──────────────────────────────────────────────────
 function showAutoThreshold() {
   const panel = document.getElementById('auto-th-panel');
   panel.style.display = panel.style.display === 'none' ? '' : 'none';
@@ -440,7 +440,7 @@ function startAutoThreshold() {
   const hold  = parseInt(document.getElementById('coeff-hold').value);
   const micro = parseInt(document.getElementById('coeff-micro').value);
   apiCmd('auto_threshold', { trig, hold, micro });
-  log(`自动门限生成开始: 触发=${trig} 保持=${hold} 微动=${micro}`);
+  log(`Die automatische Schwellenwertgenerierung beginnt: auslösen=${trig} Halten=${hold} Mikrobewegung=${micro}`);
 }
 
 let progressTimer = null;
@@ -455,16 +455,16 @@ function queryProgress() {
     const d = await res.json();
     const p = d.progress || 0;
     document.getElementById('auto-progress').style.width = p + '%';
-    document.getElementById('auto-progress-label').textContent = `进度：${p}%`;
+    document.getElementById('auto-progress-label').textContent = `Zeitplan：${p}%`;
     if (p >= 100) {
       clearInterval(progressTimer);
-      log('自动门限生成完成！');
+      log('Automatische Schwellenwertgenerierung abgeschlossen！');
       fetchInfo();
     }
   }, 2000);
 }
 
-// ── 通用 API ──────────────────────────────────────────────────
+// ── Allgemein API ──────────────────────────────────────────────────
 async function apiCmd(cmd, extra = {}) {
   try {
     const res = await fetch('/api/cmd', {
@@ -476,11 +476,11 @@ async function apiCmd(cmd, extra = {}) {
     log(`[${cmd}] ${d.ok ? '✓' : '✗'}`);
     return d;
   } catch(e) {
-    log(`[${cmd}] 请求失败: ${e.message}`);
+    log(`[${cmd}] Anfrage fehlgeschlagen: ${e.message}`);
   }
 }
 
-// ── 获取设备信息 ──────────────────────────────────────────────
+// ── Geräteinformationen abrufen ──────────────────────────────────────────────
 async function fetchInfo() {
   await apiCmd('read_info');
   setTimeout(async () => {
@@ -492,10 +492,10 @@ async function fetchInfo() {
       engineerMode = d.engineer;
       const btn = document.getElementById('btn-eng');
       btn.classList.toggle('on', engineerMode);
-      btn.textContent = engineerMode ? '⚙️ 工程模式 ON' : '⚙️ 工程模式';
+      btn.textContent = engineerMode ? '⚙️ Entwicklermodus ON' : '⚙️ Entwicklermodus';
       if (!engineerMode) {
         const badge = document.getElementById('presence-badge');
-        badge.textContent = '未知';
+        badge.textContent = 'unbekannt';
         badge.className   = 'badge unknown';
         document.getElementById('dist').textContent = '- -';
       }
@@ -509,11 +509,11 @@ async function fetchInfo() {
         d.motion_th.forEach((raw, i) => updateThumbUI('motion', i, raw));
       if (d.micro_th && d.micro_th.length)
         d.micro_th.forEach((raw, i) => updateThumbUI('micro', i, raw));
-    } catch(e) { log('获取信息失败: ' + e.message); }
+    } catch(e) { log('Informationsabruf fehlgeschlagen: ' + e.message); }
   }, 1500);
 }
 
-// ── 日志 ─────────────────────────────────────────────────────
+// ── Protokoll ─────────────────────────────────────────────────────
 function log(msg) {
   const box = document.getElementById('log-box');
   const p   = document.createElement('p');
