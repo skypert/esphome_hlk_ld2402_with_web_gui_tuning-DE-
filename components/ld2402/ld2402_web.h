@@ -421,7 +421,7 @@ async function saveFlash() {
       body: JSON.stringify({ cmd: 'save_flash' })
     });
     const d = await res.json();
-    log('Flash 保存: ' + (d.ok ? '✅ OK--Entwicklermodus beenden!' : '❌ Fehlgeschlagen'));
+    log('Flash: ' + (d.ok ? '✅ OK--Entwicklermodus beenden!' : '❌ Fehlgeschlagen'));
   } catch(e) {
     log('Flash fehlgeschlagen: ' + e.message);
   } finally {
