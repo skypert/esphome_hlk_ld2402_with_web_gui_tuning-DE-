@@ -132,9 +132,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 <!-- Funktionstasten -->
 <div class="card">
-  <div class="card-title" style="margin-bottom:10px">arbeiten</div>
+  <div class="card-title" style="margin-bottom:10px">Einstellungen</div>
   <div class="btn-row">
-    <button class="btn btn-info"    onclick="apiCmd('read_info')">🔄 Ladekonfiguration</button>
+    <button class="btn btn-info"    onclick="apiCmd('read_info')">🔄 Lade Konfigurationdaten</button>
     <button class="btn btn-toggle"  id="btn-eng" onclick="toggleEngineer()">⚙️ Entwicklermodus</button>
     <button class="btn btn-success" onclick="apiCmd('auto_gain')">📶 Automatische Verstärkung</button>
     <button class="btn btn-danger"  onclick="saveFlash()">💾 Speichern</button>
