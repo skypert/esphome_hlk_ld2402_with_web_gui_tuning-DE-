@@ -121,7 +121,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
         <input type="number" id="timeout-input" min="0" max="3600" step="5" value="30"
                style="width:80px;background:#0d1117;border:1px solid #333;border-radius:6px;
                       padding:4px 8px;color:#ddd;font-size:.85rem">
-        <span style="font-size:.78rem;color:#888;min-width:0">秒</span>
+        <span style="font-size:.78rem;color:#888;min-width:0">tbd</span>
       </div>
     </div>
   </div>
@@ -132,7 +132,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
 <!-- Funktionstasten -->
 <div class="card">
-  <div class="card-title" style="margin-bottom:10px">操作</div>
+  <div class="card-title" style="margin-bottom:10px">arbeiten</div>
   <div class="btn-row">
     <button class="btn btn-info"    onclick="apiCmd('read_info')">🔄 Ladekonfiguration</button>
     <button class="btn btn-toggle"  id="btn-eng" onclick="toggleEngineer()">⚙️ Entwicklermodus</button>
